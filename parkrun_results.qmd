@@ -1,0 +1,34 @@
+---
+title: "Parkrun Results"
+format: html
+---
+
+```{r}
+library(targets)
+tar_load(results)
+```
+
+
+```{r}
+#| echo: false
+results %>%
+  filter(run_date > Sys.Date() - 365) %>% 
+  ggplot(aes(run_date, time_mins, colour = name))+
+  geom_point()+
+  geom_line()+
+  # geom_smooth(method = "lm")+
+  # facet_wrap(~name, scales = "free")+
+  labs(title = "Parkrun times")
+```
+
+```{r}
+results %>%
+  filter(run_date > Sys.Date() - 365) %>% 
+  ggplot(aes(run_date, age_grade, colour = name))+
+  geom_point()+
+  geom_line()+
+  # geom_smooth(method = "lm")+
+  # facet_wrap(~name, scales = "free")+
+  labs(title = "Age Grading")
+```
+
