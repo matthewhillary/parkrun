@@ -16,7 +16,7 @@ ui <- fluidPage(
   sidebarLayout(
     sidebarPanel(
       checkboxInput("show_age_plot", "Show Age Grade Plot", value = FALSE),
-      checkboxGroupInput("athletes", "Select athletes to display:", choices = all_athletes),
+      checkboxGroupInput("athletes", "Select athletes to display:", choices = all_athletes, selected = all_athletes),
       hr(),
       helpText("Select the athletes you want to display in the plots.")
     ),
