@@ -1,3 +1,5 @@
+# this script uses a chrome browser to scrape the All Results table in eg `https://www.parkrun.org.uk/parkrunner/4127516/all/`
+
 import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -6,7 +8,7 @@ from selenium.webdriver.chrome.service import Service
 import numpy as np
 
 
-def scrape_all_parkrun_results(athlete_number):
+def scrape_parkrun_results_py(athlete_number):
 
   option= webdriver.ChromeOptions()
 
@@ -22,14 +24,11 @@ def scrape_all_parkrun_results(athlete_number):
   
   soup = BeautifulSoup(a,"html.parser")
   
-  soup.contents
-  
   tables = soup.findAll("table")
-  table = tables[2]
+  table = tables[2] # The third table is 'All Results' which has 7 columns (see labels below)
   
   rows = table.findAll("tr")
   text_data = []
-  mala_data = np.zeros((1,7))
   
   for tr in rows:
       cols = tr.findAll("td")
@@ -37,15 +36,12 @@ def scrape_all_parkrun_results(athlete_number):
           row_text = td.get_text()
           text_data.append(row_text.strip())
           
-  labels = ["event", "run_date", "run_number", "pos", "time", "age_grade", "pb"]
   myarray = np.asarray(text_data)
   data = myarray.reshape(-1,7)
     
+  labels = ["event", "run_date", "run_number", "pos", "time", "age_grade", "pb"]
   df = pd.DataFrame(data, columns = labels)
 
   browser.close()
 
   return(df)
-
-
-# results.to_csv(f"results_{athlete}.csv", encoding = 'utf-8')

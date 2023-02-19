@@ -1,8 +1,8 @@
 
 scrape_parkrun_results_r <- function(athlete_number = 4127516){
 
-  # note this is a call to a python function which is defined in scrape.py
-  res_raw <- scrape_all_parkrun_results(as.integer(athlete_number))
+  # note this is a call to a python function which is defined in `./python/scrape_parkrun_results_py.py`
+  res_raw <- scrape_parkrun_results_py(as.integer(athlete_number))
 
   res_raw %>%
     mutate(run_date = lubridate::dmy(run_date),

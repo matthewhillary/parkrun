@@ -6,7 +6,7 @@ library(dplyr)
 
 
 results <- tar_read(results) %>%
-  dplyr::filter(run_date >= Sys.Date() - 365)
+  filter(!(athlete_name == 'Matt' & time_mins > 25))
 
 all_athletes <- unique(results$athlete_name) %>% sort()
 
@@ -18,7 +18,8 @@ ui <- fluidPage(
       checkboxInput("show_age_plot", "Show Age Grade Plot", value = FALSE),
       checkboxGroupInput("athletes", "Select athletes to display:", choices = all_athletes, selected = all_athletes),
       hr(),
-      helpText("Select the athletes you want to display in the plots.")
+      helpText("Select the athletes you want to display in the plots."),
+      dateInput("start_date", "Start Date", value = Sys.Date() - 365),
     ),
     mainPanel(
       plotlyOutput("times_plot"),
@@ -34,7 +35,9 @@ ui <- fluidPage(
 server <- function(input, output) {
   # Create a reactive subset of the results dataframe based on the selected athletes
   selected_results <- reactive({
-    results %>% filter(athlete_name %in% input$athletes)
+    results %>%
+      filter(athlete_name %in% input$athletes,
+             run_date >= input$start_date)
   })
 
   # Create a plotly chart of time_mins vs date for the selected athletes

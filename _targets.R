@@ -22,7 +22,7 @@ options(clustermq.scheduler = "multiprocess")
 
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source()
-reticulate::source_python("scrape.py")
+reticulate::source_python("./python/scrape_parkrun_results_py.py")
 # source("other_functions.R") # Source other scripts as needed. # nolint
 
 # Replace the target list below with your own:
