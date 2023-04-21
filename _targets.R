@@ -35,5 +35,7 @@ list(
   tarchetypes::tar_age(
     results,
     get_parkrun_results(athletes),
-    age = as.difftime(1, units = "days"))
+    age = as.difftime(1, units = "days")),
+
+  tar_target(report, rmarkdown::render("parkrun_results.qmd", output_file = "./docs/index.html"))
 )
