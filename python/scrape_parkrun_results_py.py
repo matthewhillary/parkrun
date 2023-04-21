@@ -1,4 +1,6 @@
 # this script uses a chrome browser to scrape the All Results table in eg `https://www.parkrun.org.uk/parkrunner/4127516/all/`
+# if you update Chrome you need to download the correct version of chromedriver from `https://sites.google.com/chromium.org/driver/?pli=1`
+#  - just delete the old version and replace with the new one you've downloaded.  The path is in the Service() function below.
 
 import pandas as pd
 from bs4 import BeautifulSoup
