@@ -5,7 +5,7 @@
 
 # Load packages required to define the pipeline:
 library(targets)
-# library(tarchetypes) # Load other packages as needed. # nolint
+library(tarchetypes) # Load other packages as needed. # nolint
 
 # Set target options:
 tar_option_set(
@@ -32,6 +32,8 @@ list(
                          Lucia = 5377749,
                          Bella = 3914972,
                          Kat = 6869)),
-  tar_target(
-    results, get_parkrun_results(athletes))
+  tarchetypes::tar_age(
+    results,
+    get_parkrun_results(athletes),
+    age = as.difftime(1, units = "days"))
 )
