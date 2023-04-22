@@ -2,24 +2,25 @@
 title: "Parkrun Results"
 format: html
 echo: false
+warning: false
+message: false
 ---
 
 ```{r}
 library(targets)
 library(tidyverse)
-tar_load(results)
+withr::with_dir(here::here(), {
+   tar_load(c(results))
+ })
 ```
 
 
 ```{r}
-#| echo: false
 results %>%
   filter(run_date > Sys.Date() - 365) %>% 
   ggplot(aes(run_date, time_mins, colour = athlete_name))+
   geom_point()+
   geom_line()+
-  # geom_smooth(method = "lm")+
-  # facet_wrap(~name, scales = "free")+
   labs(title = "Parkrun times")
 ```
 
@@ -29,8 +30,6 @@ results %>%
   ggplot(aes(run_date, age_grade, colour = athlete_name))+
   geom_point()+
   geom_line()+
-  # geom_smooth(method = "lm")+
-  # facet_wrap(~name, scales = "free")+
   labs(title = "Age Grading")
 ```
 

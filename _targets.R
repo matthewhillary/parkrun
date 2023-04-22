@@ -37,5 +37,5 @@ list(
     get_parkrun_results(athletes),
     age = as.difftime(1, units = "days")),
 
-  tar_target(report, rmarkdown::render("parkrun_results.qmd", output_file = "./docs/index.html"))
+  tar_target(report, rmarkdown::render("docs/parkrun_results.qmd", output_file = "index.html"), cue = tar_cue("always"))
 )
