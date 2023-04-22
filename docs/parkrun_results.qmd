@@ -1,12 +1,12 @@
 ---
 title: "Parkrun Results"
 format: html
-echo: false
-warning: false
-message: false
 ---
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 library(targets)
 library(tidyverse)
 withr::with_dir(here::here(), {
@@ -16,6 +16,9 @@ withr::with_dir(here::here(), {
 
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 results %>%
   filter(run_date > Sys.Date() - 365) %>% 
   ggplot(aes(run_date, time_mins, colour = athlete_name))+
@@ -25,6 +28,9 @@ results %>%
 ```
 
 ```{r}
+#| echo: false
+#| warning: false
+#| message: false
 results %>%
   filter(run_date > Sys.Date() - 365) %>% 
   ggplot(aes(run_date, age_grade, colour = athlete_name))+
