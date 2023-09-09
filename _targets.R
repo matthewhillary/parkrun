@@ -10,20 +10,21 @@ library(tarchetypes) # Load other packages as needed. # nolint
 # Set target options:
 tar_option_set(
   packages = c("tibble", "purrr", "reticulate", "stringr", "lubridate", "dplyr", "tidyr"), # packages that your targets need to run
-  format = "rds" # default storage format
+  format = "rds", # default storage format
+  workspace_on_error = TRUE
   # Set other options as needed.
 )
 
 # tar_make_clustermq() configuration (okay to leave alone):
-options(clustermq.scheduler = "multiprocess")
+#options(clustermq.scheduler = "multiprocess")
 
 # tar_make_future() configuration (okay to leave alone):
 # Install packages {{future}}, {{future.callr}}, and {{future.batchtools}} to allow use_targets() to configure tar_make_future() options.
 
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source()
+reticulate::use_virtualenv(here::here("myenv"))
 reticulate::source_python("./python/scrape_parkrun_results_py.py")
-# source("other_functions.R") # Source other scripts as needed. # nolint
 
 # Replace the target list below with your own:
 list(
@@ -37,5 +38,5 @@ list(
     get_parkrun_results(athletes),
     age = as.difftime(1, units = "days")),
 
-  tar_target(report, rmarkdown::render("docs/parkrun_results.qmd", output_file = "index.html"), cue = tar_cue("always"))
+   tar_target(report, rmarkdown::render("docs/parkrun_results.qmd", output_file = "index.html"), cue = tar_cue("always"))
 )

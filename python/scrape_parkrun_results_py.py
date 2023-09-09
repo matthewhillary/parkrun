@@ -6,7 +6,6 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
-
 import numpy as np
 
 
@@ -14,7 +13,7 @@ def scrape_parkrun_results_py(athlete_number):
 
   option= webdriver.ChromeOptions()
 
-  service = Service(r"C:\Users\hillarym\Documents\chromedriver\chromedriver.exe")
+  service = Service(r"C:\Users\family\chromedriver\chromedriver.exe")
 
   browser = webdriver.Chrome(service = service, chrome_options=option)
   
