@@ -15,14 +15,9 @@ tar_option_set(
   # Set other options as needed.
 )
 
-# tar_make_clustermq() configuration (okay to leave alone):
-#options(clustermq.scheduler = "multiprocess")
-
-# tar_make_future() configuration (okay to leave alone):
-# Install packages {{future}}, {{future.callr}}, and {{future.batchtools}} to allow use_targets() to configure tar_make_future() options.
-
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source()
+
 reticulate::use_virtualenv(here::here("myenv"))
 reticulate::source_python("./python/scrape_parkrun_results_py.py")
 
@@ -38,5 +33,5 @@ list(
     get_parkrun_results(athletes),
     age = as.difftime(1, units = "days")),
 
-   tar_target(report, rmarkdown::render("docs/parkrun_results.qmd", output_file = "index.html"), cue = tar_cue("always"))
+   tar_render(report, "docs/parkrun_results.qmd", output_file = "index.html")
 )
