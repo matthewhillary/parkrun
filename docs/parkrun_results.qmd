@@ -8,7 +8,8 @@ format: html
 #| warning: false
 #| message: false
 library(targets)
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(plotly)
 withr::with_dir(here::here(), {
    tar_load(c(results))

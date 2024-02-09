@@ -12,4 +12,4 @@ This is using a development version (1.0.3.90) of {rvest} so that we can use the
 
 # To run
 
-`r source("run.R")` will fetch new data and refresh the targets pipeline. Then you can run `app.R` to launch the shiny app to see the data.
+`r source("run.R")` will fetch new data and refresh the targets pipeline. Then you can run `app.R` to launch the shiny app to see the data. Push to github then view [here](https://matthewhillary.github.io/parkrun/).

@@ -9,7 +9,7 @@ library(tarchetypes) # Load other packages as needed. # nolint
 
 # Set target options:
 tar_option_set(
-  packages = c("tibble", "purrr", "reticulate", "stringr", "lubridate", "dplyr", "tidyr"), # packages that your targets need to run
+  packages = c("tibble", "purrr", "stringr", "lubridate", "dplyr", "tidyr"), # packages that your targets need to run
   format = "rds", # default storage format
   workspace_on_error = TRUE
   # Set other options as needed.
@@ -17,9 +17,6 @@ tar_option_set(
 
 # Run the R scripts in the R/ folder with your custom functions:
 tar_source()
-
-reticulate::use_virtualenv(here::here("myenv"))
-reticulate::source_python("./python/scrape_parkrun_results_py.py")
 
 # Replace the target list below with your own:
 list(
