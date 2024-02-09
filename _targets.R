@@ -27,11 +27,13 @@ list(
                          Zach = 4127516,
                          Lucia = 5377749,
                          Bella = 3914972,
+                         #Charlotte = 9025155,
+                         # Kevin = 9025145
                          Kat = 6869)),
   tarchetypes::tar_age(
     results,
     get_parkrun_results(athletes),
     age = as.difftime(1, units = "days")),
 
-   tar_render(report, "docs/parkrun_results.qmd", output_file = "index.html")
+   tar_render(report, "docs/parkrun_results.qmd", output_file = "index.html", cue = tar_cue("always"))
 )

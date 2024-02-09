@@ -9,6 +9,7 @@ format: html
 #| message: false
 library(targets)
 library(tidyverse)
+library(plotly)
 withr::with_dir(here::here(), {
    tar_load(c(results))
  })
@@ -19,23 +20,33 @@ withr::with_dir(here::here(), {
 #| echo: false
 #| warning: false
 #| message: false
-results %>%
+p <- results %>%
   filter(run_date > Sys.Date() - 365) %>% 
-  ggplot(aes(run_date, time_mins, colour = athlete_name))+
+  ggplot(aes(run_date, time_mins, colour = athlete_name, group = athlete_name, text = paste(athlete_name, run_date, time, sep = "\n")))+
   geom_point()+
   geom_line()+
-  labs(title = "Parkrun times")
+  labs(title = "Parkrun times",
+       x = element_blank())
+ggplotly(p, dynamicTicks = TRUE, tooltip = "text")
 ```
 
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
-results %>%
+p2 <- results %>%
   filter(run_date > Sys.Date() - 365) %>% 
   ggplot(aes(run_date, age_grade, colour = athlete_name))+
   geom_point()+
   geom_line()+
-  labs(title = "Age Grading")
+  labs(title = "Age Grading",
+       x = element_blank())
+
+ggplotly(p2, dynamicTicks = TRUE)
+```
+```{r}
+results %>% 
+  count(athlete_name, name = "Number of Parkruns")
+  
 ```
 

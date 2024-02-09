@@ -1,4 +1,6 @@
 
+# This file is no longer needed
+
 scrape_parkrun_results_r <- function(athlete_number = 4127516){
 
   # note this is a call to a python function which is defined in `./python/scrape_parkrun_results_py.py`

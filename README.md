@@ -4,11 +4,11 @@
 
 <!-- badges: end -->
 
-The goal of parkrun is to scrape the family parkrun results.
+The goal of parkrun is to scrape the family parkrun results and display the results on github pages [here](https://matthewhillary.github.io/parkrun/).
 
 # Installation
 
-I couldn't scrape the results with {rvest} so this project uses python (selenium). There is a dependency on **chromedriver** (`C:\Users\family\chromedriver\chromedriver.exe`) which I downloaded from [here](https://chromedriver.chromium.org/downloads). Note that the version of **chromedriver** needs to match the version of the chrome browser. You can download the correct version of chromedriver from \`[https://sites.google.com/chromium.org/driver/?pli=1\`](https://sites.google.com/chromium.org/driver/?pli=1`). Just delete the old version and replace with the new one you've downloaded.
+This is using a development version (1.0.3.90) of {rvest} so that we can use the new read_html_live(). The python scripts are no longer needed.
 
 # To run
 
