@@ -8,7 +8,7 @@ The goal of parkrun is to scrape the family parkrun results and display the resu
 
 # Installation
 
-This is using a development version (1.0.3.90) of {rvest} so that we can use the new read_html_live(). The python scripts are no longer needed.
+This is using{rvest} and can use the new read_html_live() function. This requires a chromedriver.
 
 # To run
 

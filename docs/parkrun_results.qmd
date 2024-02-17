@@ -45,9 +45,19 @@ p2 <- results %>%
 
 ggplotly(p2, dynamicTicks = TRUE)
 ```
+
+---
+
+## Number of Parkruns
+
 ```{r}
-results %>% 
-  count(athlete_name, name = "Number of Parkruns")
+#| echo: false
+results |> 
+  count(athlete_name, sort = TRUE, name = "Number of Parkruns") |> 
+  rename(Athlete = athlete_name) %>% 
+  DT::datatable()
+  # knitr::kable(col.names = c("Athlete", "Number of Parkruns"))
   
 ```
+
 
