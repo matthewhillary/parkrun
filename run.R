@@ -6,3 +6,4 @@
 # to learn about your options.
 targets::tar_invalidate(results)
 targets::tar_make()
+gert::git_commit_all("automatic update")

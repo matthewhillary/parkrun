@@ -1,6 +1,7 @@
 ---
 title: "Parkrun Results"
 format: html
+date: "`r format(Sys.time(), '%d %B, %Y')`"
 ---
 
 ```{r}
