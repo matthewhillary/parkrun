@@ -25,8 +25,6 @@ list(
                          Lucia = 5377749,
                          Bella = 3914972,
                          George = 9097177,
-                          # Charlotte = 9025155,
-                          # Kevin = 9025145,
                          Kat = 6869)),
   tarchetypes::tar_age(
     results,
