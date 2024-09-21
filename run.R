@@ -8,4 +8,4 @@ targets::tar_invalidate(results)
 targets::tar_make()
 gert::git_commit_all("automatic update")
 gert::git_push()
-print("https://matthewhillary.github.io/parkrun/ should update soon")
+
